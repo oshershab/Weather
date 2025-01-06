@@ -9,7 +9,7 @@ st.subheader("Enter the name of the city:")
 
 
 user_input = st.text_input("City name:", placeholder="Type city name here")
-
+print(user_input)
 
 # Button to submit input
 if st.button("Submit"):
