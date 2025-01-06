@@ -1,4 +1,5 @@
 from weather import Weather
+import streamlit as st
 
 def main():
     api_key = "d3199210c072e0a333eacb3b62351047"
