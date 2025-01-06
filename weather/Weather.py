@@ -1,5 +1,6 @@
 import requests
 from datetime import datetime
+import streamlit as st
 
 
 def get_one_call_weather(city_name, API_key, limit=1):
@@ -32,16 +33,15 @@ def get_one_call_weather(city_name, API_key, limit=1):
         # print the time of requested city
         unix_timestamp = data['current']['dt']
         time = datetime.utcfromtimestamp(unix_timestamp).strftime('%Y-%m-%d %H:%M:%S')
-        print(f"Current time in {city_name} is {time}")
+        st.subheader(f"Current Weather in {city_name.capitalize()}:")
+        st.write(f"**Current Time:** {time}")
 
-        # print the temp of requested city
-        print(f"Current tempeture in {city_name} is {data['current']['temp']}°C")
-
-        # print weather conditions
-        print(f"Current tempeture in {city_name} feels like {data['current']['feels_like']}°C")
-        print(f"Current humidity in {city_name} is {data['current']['humidity']}%")
-
-
-
+        # Display the temperature and conditions
+        st.write(f"**Temperature:** {data['current']['temp']}°C")
+        st.write(f"**Feels Like:** {data['current']['feels_like']}°C")
+        st.write(f"**Humidity:** {data['current']['humidity']}%")
+        st.write(f"**Weather Description:** {data['current']['weather'][0]['description'].capitalize()}")
     else:
-        print(f"Error: {data['message']}")
+        st.error(f"Error: {data['message']}")
+
+
