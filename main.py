@@ -19,6 +19,6 @@ user_input = st.text_input("City name:", placeholder="Type city name here")
 if st.button("Submit"):
     # Pass the user input to the function and display the result
     if user_input:
-        greeting = Weather.get_one_call_weather(user_input, api_key)
+        checking_weather = Weather.get_one_call_weather(user_input, api_key)
     else:
         st.warning("Please enter a valid name!")
