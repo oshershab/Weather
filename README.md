@@ -66,3 +66,61 @@ To clone the project repository:
 ```bash
 git clone <your-repo-url>
 cd <your-repo-folder>
+
+### **2. Install Dependencies with Poetry**
+
+Run the following command to install dependencies:
+```bash
+poetry install
+
+
+### **3. Create a Secret Configuration**
+
+To securely store your API key, create a file named `.streamlit/secrets.toml` in the root directory:
+
+```bash
+mkdir -p .streamlit
+
+Then add the following content:
+
+```toml
+[API_KEY]
+API_KEY = "YOUR_OPENWEATHER_API_KEY"
+
+
+
+### **4. Activate the Poetry Shell**
+
+Start a Poetry shell environment by running the following command:
+
+```bash
+poetry shell
+
+## **How to Run the Application**
+
+1. Open your terminal and navigate to the project folder.
+2. Run the Streamlit app:
+   ```bash
+   streamlit run main.py
+
+3.The app will open automatically in your browser.
+Alternatively, you can visit the deployed version at:
+https://weather-samvtei2ipaal5cmy3wwtq.streamlit.app/
+
+## **File Descriptions**
+
+### **1. `weather.py`**
+
+This file contains the function `get_one_call_weather()`, which:
+- Converts the city name to latitude and longitude using OpenWeather's **Geo API**.
+- Calls OpenWeather's **One Call API** to fetch current weather details.
+- Displays the weather information using Streamlit components such as `st.subheader()`, `st.write()`, and `st.error()`.
+
+### **2. `main.py`**
+
+This is the main script to **run the Streamlit app**. It:
+- Displays the app title and input form.
+- Captures the user's input and calls the function from `weather.py`.
+- Handles form submission and error handling for invalid inputs.
+
+
