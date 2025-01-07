@@ -22,8 +22,8 @@ def get_one_call_weather(city_name, API_key, limit=1):
         "lat": lat,
         "lon": lon,
         "appid": API_key,
-        "units": "metric",  # "metric" for Celsius, "imperial" for Fahrenheit
-        "exclude": "minutely",  # You can exclude "minutely", "hourly", "daily", "alerts"
+        "units": "metric",
+        "exclude": "minutely",
     }
 
     response = requests.get(base_url, params=params)
