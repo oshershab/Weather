@@ -14,7 +14,7 @@ with st.form(key="City name"):
 
 
 # Button to submit input
-if st.button("Submit"):
+if submit_button:
     # Pass the user input to the function and display the result
     if user_input:
         checking_weather = Weather.get_one_call_weather(user_input, api_key)
