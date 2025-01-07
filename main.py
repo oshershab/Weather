@@ -1,5 +1,6 @@
 from weather import Weather
 import streamlit as st
+import pandas as pd
 
 api_key = st.secrets['API_KEY']
 
@@ -17,7 +18,12 @@ with st.form(key="City name"):
 if submit_button:
     # Pass the user input to the function and display the result
     if user_input:
-        checking_weather = Weather.get_one_call_weather(user_input, api_key)
+        lat, lon = Weather.get_one_call_weather(user_input, api_key)
+        if lat and lon:
+            # Display a map centered at the city
+            st.subheader(f"Location of {user_input.capitalize()}:")
+            city_location = pd.DataFrame({"lat": [lat], "lon": [lon]})
+            st.map(city_location)
     else:
         st.warning("Please enter a valid name!")
 

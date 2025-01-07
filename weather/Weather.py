@@ -41,7 +41,10 @@ def get_one_call_weather(city_name, API_key, limit=1):
         st.write(f"**Feels Like:** {data['current']['feels_like']}°C")
         st.write(f"**Humidity:** {data['current']['humidity']}%")
         st.write(f"**Weather Description:** {data['current']['weather'][0]['description'].capitalize()}")
+        # Return coordinates for the map
+        return lat, lon
     else:
         st.error(f"Error: {data['message']}")
+        return None, None
 
 
